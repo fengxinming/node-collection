@@ -4,7 +4,7 @@ import { builtinModules, createRequire } from 'node:module';
 import { isAbsolute, join, parse as parsePath, resolve } from 'node:path';
 
 import { load as parseYaml } from 'js-yaml';
-import { parse as parseJson } from 'json5';
+import json5 from 'json5';
 import { build } from 'vite';
 
 const __require = createRequire(import.meta.url);
@@ -74,7 +74,7 @@ export async function readCfgFile<T = unknown>(configFile: string): Promise<T | 
     case '.json':
     case '.jsonc':
     case '.json5':
-      result = parseJson(await readFile(configFile, 'utf8'));
+      result = json5.parse(await readFile(configFile, 'utf8'));
       break;
     case '.yaml':
     case '.yml':
