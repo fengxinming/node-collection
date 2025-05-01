@@ -19,8 +19,8 @@ describe('readCfgFile', () => {
 
   it('should read and parse .ts file correctly', async () => {
     const filePath = 'src/index.ts';
-    const result = await readCfgFile(filePath);
-    expect(typeof result.readCfgFile).toBe('function');
+    const result = await readCfgFile<{readCfgFile: () => void}>(filePath);
+    expect(typeof result!.readCfgFile).toBe('function');
   });
 
   it('should read and parse .json file correctly', async () => {

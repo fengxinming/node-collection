@@ -15,7 +15,7 @@ function interopDefaultCompat(e: unknown): unknown {
     : e;
 }
 
-export async function readCfgFile<T = any>(configFile: string): Promise<T | undefined> {
+export async function readCfgFile<T = unknown>(configFile: string): Promise<T | undefined> {
   if (!isAbsolute(configFile)) {
     configFile = resolve(configFile);
   }
